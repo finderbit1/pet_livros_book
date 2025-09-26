@@ -10,11 +10,11 @@ const Footer = () => {
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-6">
               <img src={pawIcon} alt="PetConnect" className="w-8 h-8" />
-              <span className="text-xl font-bold hero-gradient">PetConnect</span>
+              <span className="text-xl font-bold hero-gradient">Mini Livros do Pet</span>
             </div>
             <p className="text-muted-foreground mb-6 max-w-md leading-relaxed">
-              A plataforma que conecta corações através do amor pelos pets. 
-              Junte-se à nossa comunidade e transforme cada momento em uma memória especial.
+              A plataforma que transforma memórias dos seus pets em histórias inesquecíveis.
+              Crie livros únicos, sites interativos e produtos físicos personalizados.
             </p>
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <span>Feito com</span>
@@ -27,9 +27,9 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4">Produto</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="#features" className="hover:text-foreground smooth-transition">Features</a></li>
+              <li><a href="#templates" className="hover:text-foreground smooth-transition">Templates</a></li>
               <li><a href="#pricing" className="hover:text-foreground smooth-transition">Preços</a></li>
-              <li><a href="#" className="hover:text-foreground smooth-transition">FAQ</a></li>
+              <li><a href="#" className="hover:text-foreground smooth-transition">Exemplos</a></li>
               <li><a href="#" className="hover:text-foreground smooth-transition">Suporte</a></li>
             </ul>
           </div>
@@ -40,7 +40,7 @@ const Footer = () => {
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4" />
-                <span>oi@petconnect.com</span>
+                <span>oi@minilivrosdopet.com</span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4" />
@@ -55,7 +55,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-border/50 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-          <p>&copy; 2024 PetConnect. Todos os direitos reservados.</p>
+          <p>&copy; 2024 Mini Livros do Pet. Todos os direitos reservados.</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-foreground smooth-transition">Privacidade</a>
             <a href="#" className="hover:text-foreground smooth-transition">Termos</a>

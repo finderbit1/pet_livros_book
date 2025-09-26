@@ -1,29 +1,29 @@
-import { Star, Heart, Users, Trophy } from "lucide-react";
+import { BookOpen, Sparkles, Download, Globe } from "lucide-react";
 
 const SocialProof = () => {
   const stats = [
     {
-      icon: Users,
-      number: "5.240+",
-      label: "pets cadastrados",
+      icon: BookOpen,
+      number: "2.847+",
+      label: "livros criados",
       color: "text-primary"
     },
     {
-      icon: Heart,
-      number: "12.8K+",
-      label: "momentos compartilhados",
+      icon: Sparkles,
+      number: "8.341+",
+      label: "histórias geradas por IA",
       color: "text-secondary"
     },
     {
-      icon: Star,
-      number: "4.9",
-      label: "avaliação média",
+      icon: Download,
+      number: "5.123+",
+      label: "PDFs baixados",
       color: "text-accent"
     },
     {
-      icon: Trophy,
-      number: "50+",
-      label: "cidades atendidas",
+      icon: Globe,
+      number: "1.456+",
+      label: "sites interativos criados",
       color: "text-primary"
     }
   ];
@@ -35,8 +35,8 @@ const SocialProof = () => {
           <p className="text-muted-foreground mb-4">Destaque em:</p>
           <div className="flex items-center justify-center gap-8 opacity-60">
             <span className="text-sm font-medium">Pet Magazine</span>
-            <span className="text-sm font-medium">Animal Today</span>
-            <span className="text-sm font-medium">Pets & Tech</span>
+            <span className="text-sm font-medium">Veterinária & Cia</span>
+            <span className="text-sm font-medium">Blog do Pet</span>
           </div>
         </div>
 

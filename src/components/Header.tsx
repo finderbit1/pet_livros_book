@@ -8,15 +8,15 @@ const Header = () => {
         <nav className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <img src={pawIcon} alt="PetConnect" className="w-8 h-8" />
-            <span className="text-xl font-bold hero-gradient">PetConnect</span>
+            <span className="text-xl font-bold hero-gradient">Mini Livros do Pet</span>
           </div>
           
           <div className="hidden md:flex items-center gap-8">
             <a href="#features" className="text-muted-foreground hover:text-foreground smooth-transition">
-              Features
+              Criar Livro
             </a>
-            <a href="#how-it-works" className="text-muted-foreground hover:text-foreground smooth-transition">
-              Como Funciona
+            <a href="#templates" className="text-muted-foreground hover:text-foreground smooth-transition">
+              Templates
             </a>
             <a href="#pricing" className="text-muted-foreground hover:text-foreground smooth-transition">
               Preços
@@ -25,10 +25,10 @@ const Header = () => {
 
           <div className="flex items-center gap-4">
             <Button variant="ghost" className="hidden md:inline-flex">
-              Entrar
+              Login
             </Button>
             <Button className="glow-effect">
-              Cadastre-se
+              Criar Meu Livro
             </Button>
           </div>
         </nav>

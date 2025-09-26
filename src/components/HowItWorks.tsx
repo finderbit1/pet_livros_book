@@ -1,30 +1,30 @@
-import { UserPlus, Camera, Users, Heart } from "lucide-react";
+import { UserPlus, Camera, Sparkles, BookOpen } from "lucide-react";
 
 const HowItWorks = () => {
   const steps = [
     {
       icon: UserPlus,
       title: "Cadastre seu pet",
-      description: "Crie um perfil único com fotos, informações e personalidade do seu companheiro.",
-      image: "📝"
+      description: "Adicione nome, espécie, raça, aniversário e fotos do seu companheiro.",
+      image: "🐕"
     },
     {
       icon: Camera,
-      title: "Compartilhe momentos",
-      description: "Poste fotos, vídeos e histórias dos momentos especiais com seu pet.",
+      title: "Adicione momentos",
+      description: "Insira pequenos eventos e memórias especiais da vida do seu pet.",
       image: "📸"
     },
     {
-      icon: Users,
-      title: "Conecte-se",
-      description: "Encontre outros pet lovers, organize encontros e faça novas amizades.",
-      image: "🤝"
+      icon: Sparkles,
+      title: "IA cria a história",
+      description: "Nossa IA transforma os momentos em uma narrativa encantadora e única.",
+      image: "✨"
     },
     {
-      icon: Heart,
-      title: "Crie memórias",
-      description: "Acompanhe o crescimento, marcos importantes e celebre cada conquista.",
-      image: "💝"
+      icon: BookOpen,
+      title: "Gere livro e site",
+      description: "Baixe o PDF, acesse o site interativo ou encomende produtos físicos.",
+      image: "📖"
     }
   ];
 
@@ -37,7 +37,7 @@ const HowItWorks = () => {
             <span className="hero-gradient block">funciona</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Em poucos passos simples, você e seu pet estarão conectados com uma comunidade incrível
+            Em poucos passos simples, transformamos as memórias do seu pet em histórias inesquecíveis
           </p>
         </div>
 

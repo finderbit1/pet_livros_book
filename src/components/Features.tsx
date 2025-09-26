@@ -1,38 +1,38 @@
-import { Shield, Zap, Smartphone, Globe, Calendar, Award } from "lucide-react";
+import { Sparkles, FileText, Smartphone, Palette, Package, QrCode } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import petsImage from "@/assets/pets-community.jpg";
+import aiStoryImage from "@/assets/ai-story-magic.jpg";
 
 const Features = () => {
   const features = [
     {
-      icon: Shield,
-      title: "Seguro e Privado",
-      description: "Seus dados e de seus pets protegidos com criptografia de ponta."
+      icon: Sparkles,
+      title: "IA Criativa",
+      description: "Algoritmos avançados transformam fotos e momentos em histórias únicas."
     },
     {
-      icon: Zap,
-      title: "Super Rápido",
-      description: "Interface otimizada para carregamento instantâneo."
+      icon: FileText,
+      title: "Templates Prontos",
+      description: "Estilos temáticos fofos para cachorros, gatos e pets exóticos."
     },
     {
       icon: Smartphone,
-      title: "Mobile First",
-      description: "Experiência perfeita em qualquer dispositivo."
+      title: "Site Interativo",
+      description: "Cada pet ganha um site único com link personalizado para compartilhar."
     },
     {
-      icon: Globe,
-      title: "Comunidade Global",
-      description: "Conecte-se com pet lovers do mundo todo."
+      icon: Palette,
+      title: "Livros de Colorir",
+      description: "Versões para colorir dos seus pets, perfeitas para crianças."
     },
     {
-      icon: Calendar,
-      title: "Agenda Integrada",
-      description: "Organize consultas, vacinas e eventos importantes."
+      icon: Package,
+      title: "Produtos Físicos",
+      description: "Livros impressos de alta qualidade direto na sua casa."
     },
     {
-      icon: Award,
-      title: "Sistema de Conquistas",
-      description: "Ganhe medalhas e reconhecimento por cuidar bem do seu pet."
+      icon: QrCode,
+      title: "Quadros com QR Code",
+      description: "Quadros decorativos que levam ao site interativo do seu pet."
     }
   ];
 
@@ -44,8 +44,8 @@ const Features = () => {
           <div className="animate-fade-in">
             <div className="relative">
               <img 
-                src={petsImage} 
-                alt="Comunidade de pets" 
+                src={aiStoryImage} 
+                alt="IA gerando histórias de pets" 
                 className="rounded-3xl shadow-2xl glow-effect w-full"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-3xl" />
@@ -56,11 +56,11 @@ const Features = () => {
           <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">
               Recursos
-              <span className="hero-gradient block">incríveis</span>
+              <span className="hero-gradient block">mágicos</span>
             </h2>
             
             <p className="text-xl text-muted-foreground mb-12">
-              Tudo que você precisa para criar uma experiência única para você e seu pet.
+              Tudo que você precisa para criar livros únicos e sites interativos dos seus pets.
             </p>
 
             <div className="grid gap-6">
