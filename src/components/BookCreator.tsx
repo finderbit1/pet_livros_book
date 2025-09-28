@@ -28,6 +28,7 @@ export interface PetData {
   species: string;
   breed: string;
   birthday: Date;
+  gender?: 'male' | 'female';
   personality: string[];
   specialMoments: string;
 }
@@ -52,6 +53,7 @@ const BookCreator = () => {
       species: "",
       breed: "",
       birthday: new Date(),
+      gender: undefined,
       personality: [],
       specialMoments: ""
     }
@@ -66,6 +68,7 @@ const BookCreator = () => {
   ];
 
   const updateBookData = (updates: Partial<BookData>) => {
+    console.log('Atualizando dados do livro:', updates);
     setBookData(prev => ({ ...prev, ...updates }));
   };
 

@@ -8,47 +8,48 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Dark theme with pet-friendly gradients */
-    --background: 230 35% 7%;
-    --foreground: 35 25% 95%;
+    /* Premium dark cute pet theme */
+    --background: 240 15% 6%; /* Fundo escuro mais profundo */
+    --foreground: 0 0% 98%; /* Texto quase branco */
 
-    --card: 230 25% 12%;
-    --card-foreground: 35 25% 95%;
+    --card: 240 12% 10%; /* Cards com mais contraste */
+    --card-foreground: 0 0% 98%;
 
-    --popover: 230 25% 12%;
-    --popover-foreground: 35 25% 95%;
+    --popover: 240 12% 10%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 25 95% 55%;
-    --primary-foreground: 230 35% 7%;
+    --primary: 340 95% 80%; /* Rosa mais suave e elegante */
+    --primary-foreground: 240 15% 6%;
 
-    --secondary: 45 85% 60%;
-    --secondary-foreground: 230 35% 7%;
+    --secondary: 50 95% 75%; /* Amarelo mais dourado */
+    --secondary-foreground: 240 15% 6%;
 
-    --muted: 230 20% 20%;
-    --muted-foreground: 35 15% 70%;
+    --muted: 240 10% 18%; /* Cinza mais sutil */
+    --muted-foreground: 0 0% 75%;
 
-    --accent: 120 35% 60%;
-    --accent-foreground: 230 35% 7%;
+    --accent: 210 95% 80%; /* Azul mais suave */
+    --accent-foreground: 240 15% 6%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 230 20% 20%;
-    --input: 230 20% 20%;
-    --ring: 25 95% 55%;
+    --border: 240 10% 22%; /* Bordas mais sutis */
+    --input: 240 10% 12%;
+    --ring: 340 95% 80%; /* Rosa para focus */
 
-    --radius: 1rem;
+    --radius: 1.75rem; /* Bordas ainda mais arredondadas */
 
-    /* Pet-themed gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(25 95% 55%), hsl(45 85% 60%), hsl(120 35% 60%));
-    --gradient-card: linear-gradient(135deg, hsl(25 95% 55% / 0.1), hsl(45 85% 60% / 0.1));
-    --gradient-glow: radial-gradient(circle at center, hsl(25 95% 55% / 0.3), transparent 70%);
+    /* Premium gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(340 95% 80%), hsl(50 95% 75%), hsl(210 95% 80%));
+    --gradient-card: linear-gradient(135deg, hsl(340 95% 80% / 0.08), hsl(50 95% 75% / 0.08), hsl(210 95% 80% / 0.08));
+    --gradient-glow: radial-gradient(circle at center, hsl(340 95% 80% / 0.15), transparent 70%);
     
-    /* Shadows */
-    --shadow-glow: 0 0 60px hsl(25 95% 55% / 0.4);
-    --shadow-soft: 0 10px 40px hsl(230 35% 7% / 0.8);
+    /* Premium shadows */
+    --shadow-glow: 0 0 40px hsl(340 95% 80% / 0.25);
+    --shadow-soft: 0 20px 60px hsl(0 0% 0% / 0.4);
+    --shadow-card: 0 8px 32px hsl(0 0% 0% / 0.2);
 
-    /* Animations */
+    /* Smooth animations */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
@@ -78,10 +79,15 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
     background-image: var(--gradient-glow);
     background-attachment: fixed;
+    font-family: 'Inter', 'Nunito', sans-serif;
   }
 
   .hero-gradient {
@@ -94,14 +100,61 @@ All colors MUST be HSL.
   .card-gradient {
     background: var(--gradient-card);
     border: 1px solid hsl(var(--border));
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(24px);
+    box-shadow: var(--shadow-card);
   }
 
   .glow-effect {
     box-shadow: var(--shadow-glow);
+    transition: var(--transition-smooth);
+  }
+
+  .glow-effect:hover {
+    box-shadow: var(--shadow-glow), var(--shadow-soft);
+    transform: translateY(-2px);
   }
 
   .smooth-transition {
     transition: var(--transition-smooth);
+  }
+
+  /* Premium typography */
+  .font-cute {
+    font-family: 'Poppins', 'Quicksand', 'Baloo 2', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .font-body {
+    font-family: 'Inter', 'Nunito', 'Roboto', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  /* Premium elements */
+  .cute-shadow {
+    box-shadow: var(--shadow-card);
+    transition: var(--transition-smooth);
+  }
+
+  .cute-shadow:hover {
+    box-shadow: var(--shadow-card), var(--shadow-glow);
+  }
+
+  .cute-border {
+    border-radius: var(--radius);
+    border: 1px solid hsl(var(--border));
+    transition: var(--transition-smooth);
+  }
+
+  .cute-border:hover {
+    border-color: hsl(var(--primary) / 0.5);
+  }
+
+  /* Premium glass effect */
+  .glass-effect {
+    background: hsl(var(--card) / 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--border) / 0.5);
   }
 }

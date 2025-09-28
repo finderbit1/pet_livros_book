@@ -14,9 +14,12 @@ import {
   Share2,
   Heart,
   Sparkles,
-  BookOpen
+  BookOpen,
+  Loader2,
+  AlertCircle
 } from "lucide-react";
 import { BookData } from "../BookCreator";
+import { apiService, convertToApiData, PetBookResponse } from "@/services/api";
 
 interface PaymentStepProps {
   bookData: BookData;
@@ -27,6 +30,8 @@ const PaymentStep = ({ bookData, onPrev }: PaymentStepProps) => {
   const [paymentMethod, setPaymentMethod] = useState<"card" | "pix">("pix");
   const [isProcessing, setIsProcessing] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [petBookData, setPetBookData] = useState<PetBookResponse | null>(null);
   const [customerData, setCustomerData] = useState({
     name: "",
     email: "",
@@ -36,17 +41,35 @@ const PaymentStep = ({ bookData, onPrev }: PaymentStepProps) => {
 
   const handlePayment = async () => {
     if (!customerData.name || !customerData.email || !customerData.acceptTerms) {
-      alert("Preencha todos os campos obrigatórios");
+      setError("Preencha todos os campos obrigatórios");
       return;
     }
 
     setIsProcessing(true);
+    setError(null);
     
-    // Simular processamento
-    setTimeout(() => {
-      setIsProcessing(false);
+    try {
+      // 1. Criar o livro de pet na API
+      const apiData = convertToApiData(bookData, customerData);
+      const petBook = await apiService.createPetBook(apiData);
+      setPetBookData(petBook);
+
+      // 2. Upload das imagens
+      if (bookData.photos.length > 0) {
+        await apiService.uploadImages(petBook.id, bookData.photos);
+      }
+
+      // 3. Gerar o site estático
+      const siteResult = await apiService.generateSite(petBook.id);
+      setPetBookData(siteResult.pet_book);
+
       setIsCompleted(true);
-    }, 3000);
+    } catch (err) {
+      console.error('Erro ao processar pagamento:', err);
+      setError(err instanceof Error ? err.message : 'Erro ao processar pagamento');
+    } finally {
+      setIsProcessing(false);
+    }
   };
 
   const price = bookData.plan === "premium" ? "R$ 49,00" : "R$ 29,00";
@@ -108,15 +131,26 @@ const PaymentStep = ({ bookData, onPrev }: PaymentStepProps) => {
               <h3 className="font-semibold mb-4">Seus Downloads</h3>
               
               <div className="space-y-3">
-                <Button className="w-full glow-effect">
-                  <Download className="w-4 h-4 mr-2" />
-                  Baixar PDF do Livro
-                </Button>
+                {petBookData?.download_url && (
+                  <Button 
+                    className="w-full glow-effect"
+                    onClick={() => window.open(petBookData.download_url, '_blank')}
+                  >
+                    <Download className="w-4 h-4 mr-2" />
+                    Baixar Site Completo (ZIP)
+                  </Button>
+                )}
                 
-                <Button variant="outline" className="w-full">
-                  <Share2 className="w-4 h-4 mr-2" />
-                  Acessar Site Interativo
-                </Button>
+                {petBookData?.site_url && (
+                  <Button 
+                    variant="outline" 
+                    className="w-full"
+                    onClick={() => window.open(petBookData.site_url, '_blank')}
+                  >
+                    <Share2 className="w-4 h-4 mr-2" />
+                    Acessar Site Interativo
+                  </Button>
+                )}
                 
                 {bookData.plan === "premium" && (
                   <Button variant="outline" className="w-full">
@@ -362,9 +396,24 @@ const PaymentStep = ({ bookData, onPrev }: PaymentStepProps) => {
         </div>
       </div>
 
+      {/* Error Message */}
+      {error && (
+        <Card className="card-gradient border-red-200 dark:border-red-800">
+          <CardContent className="p-4">
+            <div className="flex items-center gap-3">
+              <AlertCircle className="w-5 h-5 text-red-500" />
+              <div>
+                <h4 className="font-semibold text-red-600">Erro no Processamento</h4>
+                <p className="text-sm text-red-500">{error}</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
       {/* Navigation */}
       <div className="flex justify-between">
-        <Button variant="outline" onClick={onPrev}>
+        <Button variant="outline" onClick={onPrev} disabled={isProcessing}>
           Voltar
         </Button>
         
@@ -373,7 +422,14 @@ const PaymentStep = ({ bookData, onPrev }: PaymentStepProps) => {
           disabled={isProcessing || !customerData.name || !customerData.email || !customerData.acceptTerms}
           className="glow-effect"
         >
-          {isProcessing ? "Processando..." : `Pagar ${price}`}
+          {isProcessing ? (
+            <>
+              <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+              Processando...
+            </>
+          ) : (
+            `Pagar ${price}`
+          )}
         </Button>
       </div>
     </div>

@@ -1,7 +1,7 @@
-import BookCreator from "@/components/BookCreator";
+import PetCreatorAdvanced from "@/components/PetCreatorAdvanced";
 
 const BookCreatorPage = () => {
-  return <BookCreator />;
+  return <PetCreatorAdvanced />;
 };
 
 export default BookCreatorPage;

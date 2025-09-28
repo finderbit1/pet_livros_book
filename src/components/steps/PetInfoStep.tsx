@@ -114,6 +114,22 @@ const PetInfoStep = ({ petData, onUpdate, onNext, isValid }: PetInfoStepProps) =
           </div>
 
           <div>
+            <Label className="text-lg font-semibold">Sexo</Label>
+            <Select 
+              value={localData.gender || ""} 
+              onValueChange={(value) => updateData({ gender: value as 'male' | 'female' || undefined })}
+            >
+              <SelectTrigger className="mt-2 text-lg">
+                <SelectValue placeholder="Selecione o sexo" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="male">Macho</SelectItem>
+                <SelectItem value="female">Fêmea</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
+          <div>
             <Label className="text-lg font-semibold">Data de nascimento</Label>
             <Popover>
               <PopoverTrigger asChild>

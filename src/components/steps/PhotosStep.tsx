@@ -15,20 +15,31 @@ interface PhotosStepProps {
 
 const PhotosStep = ({ photos, onUpdate, onNext, onPrev, isValid, plan = "basic" }: PhotosStepProps) => {
   const [previewIndex, setPreviewIndex] = useState<number | null>(null);
+  const [isDragOver, setIsDragOver] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const maxPhotos = plan === "premium" ? 10 : 5;
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    console.log('Upload iniciado:', event.target.files);
     const files = Array.from(event.target.files || []);
+    console.log('Arquivos selecionados:', files);
+    
     const imageFiles = files.filter(file => file.type.startsWith('image/'));
+    console.log('Arquivos de imagem:', imageFiles);
     
     if (photos.length + imageFiles.length > maxPhotos) {
       alert(`Você pode adicionar no máximo ${maxPhotos} fotos no plano ${plan === "premium" ? "Premium" : "Básico"}`);
       return;
     }
 
+    console.log('Atualizando fotos:', [...photos, ...imageFiles]);
     onUpdate([...photos, ...imageFiles]);
+    
+    // Limpar o input para permitir selecionar os mesmos arquivos novamente
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
   };
 
   const removePhoto = (index: number) => {
@@ -48,6 +59,34 @@ const PhotosStep = ({ photos, onUpdate, onNext, onPrev, isValid, plan = "basic" 
     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
   };
 
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragOver(true);
+  };
+
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragOver(false);
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragOver(false);
+    
+    const files = Array.from(e.dataTransfer.files);
+    console.log('Arquivos arrastados:', files);
+    
+    const imageFiles = files.filter(file => file.type.startsWith('image/'));
+    console.log('Imagens arrastadas:', imageFiles);
+    
+    if (photos.length + imageFiles.length > maxPhotos) {
+      alert(`Você pode adicionar no máximo ${maxPhotos} fotos no plano ${plan === "premium" ? "Premium" : "Básico"}`);
+      return;
+    }
+
+    onUpdate([...photos, ...imageFiles]);
+  };
+
   return (
     <div className="space-y-8">
       {/* Header */}
@@ -63,7 +102,16 @@ const PhotosStep = ({ photos, onUpdate, onNext, onPrev, isValid, plan = "basic" 
 
       {/* Upload Area */}
       <div className="space-y-4">
-        <Card className="border-2 border-dashed border-primary/30 hover:border-primary transition-colors">
+        <Card 
+          className={`border-2 border-dashed transition-colors ${
+            isDragOver 
+              ? 'border-primary bg-primary/5' 
+              : 'border-primary/30 hover:border-primary'
+          }`}
+          onDragOver={handleDragOver}
+          onDragLeave={handleDragLeave}
+          onDrop={handleDrop}
+        >
           <CardContent className="p-8">
             <div className="text-center">
               <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary/10 to-primary/20 flex items-center justify-center">

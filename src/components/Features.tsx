@@ -9,42 +9,48 @@ const Features = () => {
       title: "Histórias Personalizadas",
       description: "Criamos histórias únicas baseadas nas fotos e momentos especiais do seu pet.",
       color: "from-purple-500 to-pink-500",
-      emoji: "📖"
+      emoji: "📖",
+      animation: "animate-fade-in-up"
     },
     {
       icon: BookOpen,
       title: "Templates Prontos",
       description: "Estilos temáticos fofos para cachorros, gatos e pets exóticos.",
       color: "from-blue-500 to-cyan-500",
-      emoji: "📚"
+      emoji: "📚",
+      animation: "animate-fade-in-left"
     },
     {
       icon: Monitor,
       title: "Site Interativo",
       description: "Cada pet ganha um site único com link personalizado para compartilhar.",
       color: "from-green-500 to-emerald-500",
-      emoji: "💻"
+      emoji: "💻",
+      animation: "animate-fade-in-right"
     },
     {
       icon: Palette,
       title: "Livros de Colorir",
       description: "Versões para colorir dos seus pets, perfeitas para crianças.",
       color: "from-orange-500 to-red-500",
-      emoji: "🎨"
+      emoji: "🎨",
+      animation: "animate-fade-in-up"
     },
     {
       icon: Printer,
       title: "Produtos Físicos",
       description: "Livros impressos de alta qualidade direto na sua casa.",
       color: "from-yellow-500 to-orange-500",
-      emoji: "🖨️"
+      emoji: "🖨️",
+      animation: "animate-fade-in-left"
     },
     {
       icon: QrCode,
       title: "Quadros com QR Code",
       description: "Quadros decorativos que levam ao site interativo do seu pet.",
       color: "from-indigo-500 to-purple-500",
-      emoji: "📱"
+      emoji: "📱",
+      animation: "animate-fade-in-right"
     }
   ];
 
@@ -81,14 +87,14 @@ const Features = () => {
                 return (
                   <Card 
                     key={index} 
-                    className="card-gradient border-0 smooth-transition hover:scale-105 group"
-                    style={{ animationDelay: `${index * 0.1}s` }}
+                    className={`card-gradient border-0 smooth-transition hover:scale-105 group ${feature.animation}`}
+                    style={{ animationDelay: `${index * 0.2}s` }}
                   >
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
                         <div className="flex-shrink-0">
-                          <div className={`inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br ${feature.color} relative overflow-hidden`}>
-                            <Icon className="w-7 h-7 text-white z-10" />
+                          <div className={`inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br ${feature.color} relative overflow-hidden group-hover:animate-bounce-gentle`}>
+                            <Icon className="w-7 h-7 text-white z-10 group-hover:animate-wiggle" />
                             <div className="absolute inset-0 bg-white/20 backdrop-blur-sm"></div>
                           </div>
                         </div>

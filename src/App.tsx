@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import CreateCounterPage from "./pages/CreateCounter";
 import TodoPage from "./pages/TodoPage";
 import BookCreatorPage from "./pages/BookCreator";
+import TestUpload from "./pages/TestUpload";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/create-counter" element={<CreateCounterPage />} />
           <Route path="/todo" element={<TodoPage />} />
           <Route path="/criar-livro" element={<BookCreatorPage />} />
+          <Route path="/test-upload" element={<TestUpload />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
