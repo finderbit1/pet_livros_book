@@ -6,6 +6,7 @@ import SocialProof from "@/components/SocialProof";
 import HowItWorks from "@/components/HowItWorks";
 import Features from "@/components/Features";
 import Pricing from "@/components/Pricing";
+import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -14,10 +15,11 @@ const Index = () => {
       <Header />
       <main>
         <HeroSection />
-        <SocialProof />
+        {/* <SocialProof />s */}
         <HowItWorks />
-        <Features />
+        {/* <Features /> */}
         <Pricing />
+        <FAQ />
       </main>
       <Footer />
     </div>

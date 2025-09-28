@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Book, Sparkles, Heart } from "lucide-react";
+import { Link } from "react-router-dom";
 import heroBookMockup from "@/assets/hero-book-mockup.jpg";
 
 const HeroSection = () => {
@@ -26,22 +27,23 @@ const HeroSection = () => {
             </h1>
             
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              Nossa IA transforma as memórias do seu bichinho em histórias encantadoras. 
-              Gere livros digitais, sites interativos e produtos físicos personalizados.
+              Transformamos as memórias do seu bichinho em histórias encantadoras. 
+              Crie livros digitais, sites interativos.
               <span className="text-primary font-semibold"> Cada momento vira uma história mágica!</span>
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button size="lg" className="text-lg px-8 py-6 glow-effect animate-glow-pulse">
-                Criar Livro Grátis
-              </Button>
-              <Button variant="outline" size="lg" className="text-lg px-8 py-6 border-primary/30 hover:border-primary">
-                Ver Exemplo
+              <Button 
+                size="lg" 
+                className="text-lg px-8 py-6 glow-effect animate-glow-pulse"
+                onClick={() => window.location.href = '/criar-livro'}
+              >
+                Criar Livro 
               </Button>
             </div>
 
             {/* Social proof */}
-            <div className="mt-12 flex items-center gap-8 justify-center lg:justify-start text-sm text-muted-foreground">
+            {/* <div className="mt-12 flex items-center gap-8 justify-center lg:justify-start text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
                 <div className="flex -space-x-2">
                   <div className="w-8 h-8 rounded-full bg-gradient-to-r from-primary to-secondary"></div>
@@ -50,7 +52,7 @@ const HeroSection = () => {
                 </div>
                 <span>+2.847 livros criados</span>
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* Right content - Book mockup */}

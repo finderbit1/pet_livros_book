@@ -5,51 +5,33 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 const Pricing = () => {
   const plans = [
     {
-      name: "Grátis",
-      price: "R$ 0",
-      period: "para sempre",
-      description: "Perfeito para experimentar",
+      name: "Básico",
+      price: "R$ 29,00",
+      period: "único",
+      description: "Perfeito para começar",
       features: [
-        "1 pet cadastrado",
-        "Até 10 páginas no livro",
-        "Templates básicos",
-        "Site interativo simples",
-        "Download em PDF"
+        "5 fotos",
+        "1 ano de acesso ao site",
+        "PDF da história (5 páginas)",
+        "Sem música"
       ],
-      cta: "Começar Grátis",
+      cta: "Escolher Básico",
       popular: false
     },
     {
       name: "Premium",
-      price: "R$ 19,90",
-      period: "/mês",
-      description: "Para famílias pet lovers",
+      price: "R$ 49,00",
+      period: "único",
+      description: "Para quem quer o melhor",
       features: [
-        "Pets ilimitados",
-        "Livros ilimitados", 
-        "Templates premium",
-        "IA narrativa avançada",
-        "Site interativo completo",
-        "Suporte prioritário"
+        "10 fotos",
+        "Acesso para sempre ao site",
+        "Com música",
+        "PDF da história (10 páginas)",
+        "PDF bobie godies das fotos"
       ],
-      cta: "Assinar Premium",
+      cta: "Escolher Premium",
       popular: true
-    },
-    {
-      name: "Família",
-      price: "R$ 29,90",
-      period: "/mês",
-      description: "Para múltiplos usuários",
-      features: [
-        "Tudo do Premium",
-        "Até 5 usuários",
-        "Espaço extra para fotos",
-        "Vídeos nos livros",
-        "Backup automático",
-        "Gestão familiar"
-      ],
-      cta: "Assinar Família",
-      popular: false
     }
   ];
 
@@ -58,15 +40,15 @@ const Pricing = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-            Planos
-            <span className="hero-gradient block">para todos</span>
+            Escolha seu
+            <span className="hero-gradient block">pacote</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Escolha o plano ideal para preservar as memórias dos seus pets
+            Pagamento único, sem mensalidades. Crie quantos livros quiser!
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {plans.map((plan, index) => (
             <Card 
               key={index}
@@ -106,6 +88,7 @@ const Pricing = () => {
                 <Button 
                   className={`w-full ${plan.popular ? 'glow-effect' : ''}`}
                   variant={plan.popular ? 'default' : 'outline'}
+                  onClick={() => window.location.href = '/criar-livro'}
                 >
                   {plan.cta}
                 </Button>
@@ -114,32 +97,6 @@ const Pricing = () => {
           ))}
         </div>
 
-        {/* Physical products section */}
-        <div className="mt-20 text-center">
-          <h3 className="text-2xl font-bold mb-6">
-            Produtos <span className="hero-gradient">Físicos</span>
-          </h3>
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <div className="card-gradient p-6 rounded-2xl">
-              <div className="text-3xl mb-4">📖</div>
-              <h4 className="font-semibold mb-2">Livro Impresso</h4>
-              <p className="text-2xl font-bold hero-gradient mb-2">R$ 79 - 149</p>
-              <p className="text-sm text-muted-foreground">Capa dura, papel premium</p>
-            </div>
-            <div className="card-gradient p-6 rounded-2xl">
-              <div className="text-3xl mb-4">🎨</div>
-              <h4 className="font-semibold mb-2">Livro de Colorir</h4>
-              <p className="text-2xl font-bold hero-gradient mb-2">R$ 39 - 69</p>
-              <p className="text-sm text-muted-foreground">Diversão para toda família</p>
-            </div>
-            <div className="card-gradient p-6 rounded-2xl">
-              <div className="text-3xl mb-4">🖼️</div>
-              <h4 className="font-semibold mb-2">Quadro QR Code</h4>
-              <p className="text-2xl font-bold hero-gradient mb-2">R$ 149 - 399</p>
-              <p className="text-sm text-muted-foreground">Decoração interativa</p>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );

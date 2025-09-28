@@ -1,38 +1,50 @@
-import { Sparkles, FileText, Smartphone, Palette, Package, QrCode } from "lucide-react";
+import { Sparkles, FileText, Smartphone, Palette, Package, QrCode, Brain, Wand2, Share2, Download, Heart, BookOpen, Image, Printer, Monitor } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import aiStoryImage from "@/assets/ai-story-magic.jpg";
 
 const Features = () => {
   const features = [
     {
-      icon: Sparkles,
-      title: "IA Criativa",
-      description: "Algoritmos avançados transformam fotos e momentos em histórias únicas."
+      icon: Brain,
+      title: "Histórias Personalizadas",
+      description: "Criamos histórias únicas baseadas nas fotos e momentos especiais do seu pet.",
+      color: "from-purple-500 to-pink-500",
+      emoji: "📖"
     },
     {
-      icon: FileText,
+      icon: BookOpen,
       title: "Templates Prontos",
-      description: "Estilos temáticos fofos para cachorros, gatos e pets exóticos."
+      description: "Estilos temáticos fofos para cachorros, gatos e pets exóticos.",
+      color: "from-blue-500 to-cyan-500",
+      emoji: "📚"
     },
     {
-      icon: Smartphone,
+      icon: Monitor,
       title: "Site Interativo",
-      description: "Cada pet ganha um site único com link personalizado para compartilhar."
+      description: "Cada pet ganha um site único com link personalizado para compartilhar.",
+      color: "from-green-500 to-emerald-500",
+      emoji: "💻"
     },
     {
       icon: Palette,
       title: "Livros de Colorir",
-      description: "Versões para colorir dos seus pets, perfeitas para crianças."
+      description: "Versões para colorir dos seus pets, perfeitas para crianças.",
+      color: "from-orange-500 to-red-500",
+      emoji: "🎨"
     },
     {
-      icon: Package,
+      icon: Printer,
       title: "Produtos Físicos",
-      description: "Livros impressos de alta qualidade direto na sua casa."
+      description: "Livros impressos de alta qualidade direto na sua casa.",
+      color: "from-yellow-500 to-orange-500",
+      emoji: "🖨️"
     },
     {
       icon: QrCode,
       title: "Quadros com QR Code",
-      description: "Quadros decorativos que levam ao site interativo do seu pet."
+      description: "Quadros decorativos que levam ao site interativo do seu pet.",
+      color: "from-indigo-500 to-purple-500",
+      emoji: "📱"
     }
   ];
 
@@ -45,7 +57,7 @@ const Features = () => {
             <div className="relative">
               <img 
                 src={aiStoryImage} 
-                alt="IA gerando histórias de pets" 
+                alt="Criando histórias personalizadas de pets" 
                 className="rounded-3xl shadow-2xl glow-effect w-full"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-3xl" />
@@ -69,21 +81,25 @@ const Features = () => {
                 return (
                   <Card 
                     key={index} 
-                    className="card-gradient border-0 smooth-transition hover:scale-105"
+                    className="card-gradient border-0 smooth-transition hover:scale-105 group"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
                         <div className="flex-shrink-0">
-                          <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10">
-                            <Icon className="w-6 h-6 text-primary" />
+                          <div className={`inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br ${feature.color} relative overflow-hidden`}>
+                            <Icon className="w-7 h-7 text-white z-10" />
+                            <div className="absolute inset-0 bg-white/20 backdrop-blur-sm"></div>
                           </div>
                         </div>
-                        <div>
-                          <h3 className="font-semibold mb-2 text-lg">
-                            {feature.title}
-                          </h3>
-                          <p className="text-muted-foreground">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-2">
+                            <h3 className="font-semibold text-lg">
+                              {feature.title}
+                            </h3>
+                            <span className="text-xl">{feature.emoji}</span>
+                          </div>
+                          <p className="text-muted-foreground leading-relaxed">
                             {feature.description}
                           </p>
                         </div>
